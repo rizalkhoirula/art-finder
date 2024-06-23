@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Art;
+use App\Models\Domisili;
+use App\Models\Keahlian;
+use Illuminate\Http\Request;
 
 class ArtController extends Controller
 {
     public function index()
     {
-        $art = Art::all();
+        $domisili = Domisili::all();
+        $keahlian = Keahlian::all();
+        $art = Art::with('keahlian', 'domisili')->get();
         return view('admin.pages.art', [
-            'art' => $art
+            'art' => $art,
+            'domisili' => $domisili,
+            'keahlian' => $keahlian
         ]);
     }
 
@@ -23,7 +29,9 @@ class ArtController extends Controller
             'tgl_lahir' => 'required',
             'alamat' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg',
-            'status' => 'required'
+            'status' => 'required',
+            'id_domisili' => 'required',
+            'id_keahlian' => 'required'
         ], [
             'name.required' => 'Nama harus diisi',
             'jenis_kelamin.required' => 'Jenis kelamin harus diisi',
@@ -32,7 +40,10 @@ class ArtController extends Controller
             'foto.required' => 'Foto harus diisi',
             'foto.image' => 'Foto harus berupa gambar',
             'foto.mimes' => 'Foto harus berformat jpeg, png, jpg',
-            'status.required' => 'Status harus diisi'
+            'status.required' => 'Status harus diisi',
+            'id_domisili.required' => 'Domisili harus diisi',
+            'id_keahlian.required' => 'Keahlian harus diisi'
+
 
         ]);
 
@@ -50,6 +61,8 @@ class ArtController extends Controller
         $art->alamat = $request->alamat;
         $art->foto = $nama_file;
         $art->status = $request->status;
+        $art->id_domisili = $request->id_domisili;
+        $art->id_keahlian = $request->id_keahlian;
         $art->save();
 
         return redirect('/admin/art')->with('store', 'Data berhasil ditambahkan');
@@ -62,13 +75,17 @@ class ArtController extends Controller
             'jenis_kelamin' => 'required',
             'tgl_lahir' => 'required',
             'alamat' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            'id_domisili' => 'required',
+            'id_keahlian' => 'required'
         ], [
             'name.required' => 'Nama harus diisi',
             'jenis_kelamin.required' => 'Jenis kelamin harus diisi',
             'tgl_lahir.required' => 'Tanggal lahir harus diisi',
             'alamat.required' => 'Alamat harus diisi',
-            'status.required' => 'Status harus diisi'
+            'status.required' => 'Status harus diisi',
+            'id_domisili.required' => 'Domisili harus diisi',
+            'id_keahlian.required' => 'Keahlian harus diisi'
 
         ]);
 
@@ -96,6 +113,8 @@ class ArtController extends Controller
             $art->foto = $nama_file;
         }
         $art->status = $request->status;
+        $art->id_domisili = $request->id_domisili;
+        $art->id_keahlian = $request->id_keahlian;
         $art->save();
 
         return redirect('/admin/art')->with('update', 'Data berhasil diubah');

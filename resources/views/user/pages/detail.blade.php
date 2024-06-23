@@ -1,5 +1,5 @@
 @extends('user.layout.main')
-
+@section('title', 'Detail Art - '.$art->name)
 @section('content')
 <!-- Sart Single Product -->
 <section class="gi-single-product py-[40px] max-[767px]:py-[30px]">
@@ -83,6 +83,8 @@
                                             </li>
                                             <li class="my-[10px] text-[#777] text-[14px] list-circle"><strong class="font-semibold">Alamat : </strong> {{ $art->alamat }}</li>
                                             <li class="my-[10px] text-[#777] text-[14px] list-circle"><strong class="font-semibold">Status :</strong> {{ $art->status }}</li>
+                                            <li class="my-[10px] text-[#777] text-[14px] list-circle"><strong class="font-semibold">Keahlian :</strong> {{ $art->keahlian->name }}</li>
+                                            <li class="my-[10px] text-[#777] text-[14px] list-circle"><strong class="font-semibold">Pengalaman :</strong> {{ $art->domisili->name }}</li>
                                         </ul>
                                     </div>
                                     {{-- <div class="gi-pro-variation mb-[20px] pb-[5px]">

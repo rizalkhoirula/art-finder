@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DomisiliController;
+use App\Http\Controllers\KeahlianController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\User\LandingController;
@@ -47,6 +49,18 @@ Route::group(['middleware' => ['IsAdmin']], function () {
     Route::put('/admin/art/update/{id}', [ArtController::class, 'edit']);
     Route::delete('/admin/art/delete/{id}', [ArtController::class, 'destroy']);
 
+    # Domisili
+    Route::get('/admin/domisili', [DomisiliController::class, 'index']);
+    Route::post('/admin/domisili/store', [DomisiliController::class, 'store']);
+    Route::put('/admin/domisili/update/{id}', [DomisiliController::class, 'edit']);
+    Route::delete('/admin/domisili/delete/{id}', [DomisiliController::class, 'destroy']);
+
+    # Keahlian
+    Route::get('/admin/keahlian', [KeahlianController::class, 'index']);
+    Route::post('/admin/keahlian/store', [KeahlianController::class, 'store']);
+    Route::put('/admin/keahlian/update/{id}', [KeahlianController::class, 'edit']);
+    Route::delete('/admin/keahlian/delete/{id}', [KeahlianController::class, 'destroy']);
+
     # Penyewaan
     Route::get('/admin/penyewaan', [PenyewaanController::class, 'index']);
     Route::delete('/admin/penyewaan/delete/{id}', [PenyewaanController::class, 'destroy']);
@@ -66,12 +80,17 @@ Route::post('/user/register', [UserAuthController::class, 'postRegister']);
 
 Route::get('/user/detail/{id}', [LandingController::class, 'detail']);
 
+Route::get('/user/reset-password', [UserAuthController::class, 'linkresetpassword']);
+Route::post('/user/reset-password', [UserAuthController::class, 'sendlinkresetpassword']);
+Route::get('/user/reset-password/{code}', [UserAuthController::class, 'changepassword']);
+Route::post('/user/change-password', [UserAuthController::class, 'changepasswordpost']);
+
 // group middleware
 Route::group(['middleware' => ['IsUser']], function () {
 
     Route::get('/user/logout', [UserAuthController::class, 'logout']);
     Route::get('/user/profil', [UserAuthController::class, 'indexProfil']);
-
+    Route::post('/user/profil', [UserAuthController::class, 'updateProfil']);
 
     Route::post('/user/sewa', [LandingController::class, 'sewa']);
     Route::put('/user/tidakjadisewa/{id}', [LandingController::class, 'tidakjadisewa']);

@@ -46,9 +46,28 @@
                         <!-- Header Search Start -->
                         <div class="self-center gi-header-search my-[0] mx-[auto] max-[991px]:m-0">
                             <div class="header-search w-full min-w-[700px] px-[30px] relative max-[1399px]:min-w-[500px] max-[1199px]:min-w-[400px] max-[991px]:p-0 max-[767px]:min-w-[350px] max-[480px]:min-w-[300px] max-[320px]:min-w-full">
-                                <form class="gi-search-group-form relative flex border-[1px] border-solid border-[#eee] items-center rounded-[5px]" action="#">
-                                    <input class="form-control gi-search-bar block w-full min-h-[50px] h-[50px] max-[991px]:h-[40px] max-[991px]:min-h-[40px] px-[15px] text-[13px] font-normal leading-[1] text-[#777] bg-transparent outline-[0] border-[0] tracking-[0.6px]" placeholder="Search Products..." type="text">
-                                    <button type="submit" class="search_submit relative flex items-center justify-center w-[48px] h-[40px] basis-[48px]">
+                                <form class="gi-search-group-form relative flex border-[1px] border-solid border-[#eee] items-center rounded-[5px]" action="/" method="get">
+                                    <input name="name" class="form-control gi-search-bar block w-full min-h-[50px] h-[50px] max-[991px]:h-[40px] max-[991px]:min-h-[40px] px-[15px] text-[13px] font-normal leading-[1] text-[#777] bg-transparent outline-[0] border-[0] tracking-[0.6px]" placeholder="Search Products..." type="text">
+                                    {{-- <button type="submit" class="search_submit relative flex items-center justify-center w-[48px] h-[40px] basis-[48px]">
+                                        <i class="fi-rr-search text-[#4b5966] h-[18px] w-[18px] transition-all duration-[0.3s] ease-in-out"></i>
+                                    </button> --}}
+                                    {{-- select --}}
+                                    <select name="id_keahlian" class="form-select gi-search-select block w-[150px] min-h-[50px] h-[50px] max-[991px]:h-[40px] max-[991px]:min-h-[40px] px-[15px] text-[13px] font-normal leading-[1] text-[#777] bg-transparent outline-[0] border-[0] tracking-[0.6px]">
+                                        <option value="0">Pilih Keahlian</option>
+                                        @foreach ($keahlian as $item1 )
+                                        <option value="{{ $item1->id }}">{{ $item1->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    {{-- select --}}
+                                    <select name="id_domisili" class="form-select gi-search-select block w-[150px] min-h-[50px] h-[50px] max-[991px]:h-[40px] max-[991px]:min-h-[40px] px-[15px] text-[13px] font-normal leading-[1] text-[#777] bg-transparent outline-[0] border-[0] tracking-[0.6px]">
+                                        <option value="0">Pilih Domisili</option>
+                                        @foreach ($domisili as $item2 )
+                                        <option value="{{ $item2->id }}">{{ $item2->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <button type="submit" class="search_submit relative flex items-center justify-center w-[48px] h-[50px] basis-[48px]">
                                         <i class="fi-rr-search text-[#4b5966] h-[18px] w-[18px] transition-all duration-[0.3s] ease-in-out"></i>
                                     </button>
                                 </form>
@@ -59,7 +78,7 @@
                         <div class="gi-header-action self-center max-[991px]:hidden">
                             <div class="gi-header-bottons flex justify-end">
                                 <!-- Header User Start -->
-                                @if(Auth::check())
+                                @if(Auth::check() && Auth::user()->role == 'user')
                                 <div class="gi-acc-drop relative">
                                     <a href="javascript:void(0)" class="gi-header-btn gi-header-user dropdown-toggle gi-user-toggle mr-[30px] transition-all duration-[0.3s] ease-in-out relative flex text-[#4b5966] w-[auto] items-center whitespace-nowrap" title="Account">
                                         <div class="header-icon relative flex">
@@ -72,6 +91,7 @@
                                     </a>
                                     <ul class="gi-dropdown-menu min-w-[150px] py-[5px] transition-all duration-[0.3s] ease-in-out mt-[25px] absolute z-[16] text-left bg-[#fff] block opacity-0 invisible left-[0] right-[auto] border-[1px] border-solid border-[#eee] rounded-[5px]">
                                         <li><a class="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-[#5caf90]" href="/user/penyewaan">Penyewaan</a></li>
+                                        <li><a class="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-[#5caf90]" href="/user/profil">Profil</a></li>
                                         <li><a class="dropdown-item py-[10px] px-[20px] block w-full font-normal text-[13px] text-[#777] hover:bg-transparent hover:text-[#5caf90]" href="/user/logout">Logout</a></li>
                                     </ul>
                                 </div>
@@ -108,7 +128,7 @@
             <div class="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px] relative">
                 <div class="gi-nav-bar flex flex-row justify-between relative w-full px-[12px]">
                     <!-- Category Toggle -->
-                    <div class="gi-category-icon-block py-[5px] static">
+                    {{-- <div class="gi-category-icon-block py-[5px] static">
                         <div class="gi-category-menu relative">
                             <div class="gi-category-toggle w-[200px] min-h-[50px] px-[15px] flex items-center bg-[#5caf90] rounded-[5px] cursor-pointer max-[1199px]:w-auto max-[991px]:border-[0]">
                                 <i class="fi fi-rr-apps text-[18px] text-[#fff] leading-[0]"></i>
@@ -242,10 +262,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Main Menu Start -->
-                    <div id="gi-main-menu-desk" class="w-full flex items-center min-[992px]:block hidden">
+                    {{-- <div id="gi-main-menu-desk" class="w-full flex items-center min-[992px]:block hidden">
                         <div class="nav-desk">
                             <div class="w-full flex flex-wrap px-[12px] min-[1400px]:relative">
                                 <div class="basis-auto w-full self-center">
@@ -369,7 +389,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- Main Menu End -->
                 </div>
             </div>
@@ -386,11 +406,12 @@
             <div class="gi-menu-inner">
                 <div class="gi-menu-content">
                     <ul>
-                        @if (Auth::check())
+                        @if (Auth::check() && Auth::user()->role == 'user')
                         <li class="dropdown relative drop-list">
                             <a href="javascript:void(0)" class="dropdown-arrow mb-[12px] p-[12px] block capitalize text-[#777] border-[1px] border-solid border-[#eee] rounded-[5px] text-[15px] font-medium">{{ Auth::user()->name }}</a>
                             <ul class="sub-menu w-full min-w-[auto] p-0 mb-[10px] static hidden visible transition-none opacity-[1]">
                                 <li><a href="/user/penyewaan" class="mb-[0] pl-[15px] py-[12px] pr-[0] capitalize block text-[14px] font-normal text-[#777]">Penyewaan</a></li>
+                                <li><a href="/user/profil" class="mb-[0] pl-[15px] py-[12px] pr-[0] capitalize block text-[14px] font-normal text-[#777]">Profile</a></li>
                                 <li><a href="/user/logout" class="mb-[0] pl-[15px] py-[12px] pr-[0] capitalize block text-[14px] font-normal text-[#777]">Logout</a></li>
 
                             </ul>

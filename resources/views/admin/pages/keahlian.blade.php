@@ -38,18 +38,14 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>No Handphone</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($user as $item )
+                                    @foreach ($keahlian as $item )
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->no_hp }}</td>
                                         <td>
                                             <button data-bs-toggle="modal" data-bs-target="#modaledit{{ $item->id }}" class="btn btn-warning">Edit</button>
                                             <button data-bs-toggle="modal" data-bs-target="#modaldelete{{ $item->id }}" class="btn btn-danger">Delete</button>
@@ -63,7 +59,7 @@
                                                     <h5 class="modal-title">Delete</h5><a href="#" class="close" data-bs-dismiss="modal" aria-label="Close"><em class="icon ni ni-cross"></em></a>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="/admin/user/delete/{{ $item->id }}" method="POST" class="form-validate is-alter">
+                                                    <form action="/admin/keahlian/delete/{{ $item->id }}" method="POST" class="form-validate is-alter">
                                                         @csrf
                                                         @method('delete')
                                                         <p>Anda yakin akan menghapus {{ $item->name }}</p>
@@ -83,25 +79,11 @@
                                                     <h5 class="modal-title">Edit</h5><a href="#" class="close" data-bs-dismiss="modal" aria-label="Close"><em class="icon ni ni-cross"></em></a>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="/admin/user/update/{{ $item->id }}" method="POST" class="form-validate is-alter">
+                                                    <form action="/admin/keahlian/update/{{ $item->id }}" method="POST" class="form-validate is-alter">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="form-group"><label class="form-label" for="full-name">Full Name</label>
                                                             <div class="form-control-wrap"><input type="text" name="name" value="{{ $item->name }}" class="form-control" id="full-name" required=""></div>
-                                                        </div>
-                                                        <div class="form-group"><label class="form-label" for="email-address">Email address</label>
-                                                            <div class="form-control-wrap"><input type="text" name="email" value="{{ $item->email }}" class="form-control" id="email-address" required=""></div>
-                                                        </div>
-                                                        <div class="form-group"><label class="form-label" for="phone-no">Phone No</label>
-                                                            <div class="form-control-wrap"><input type="text" name="no_hp" value="{{ $item->no_hp }}" class="form-control" id="phone-no"></div>
-                                                        </div>
-
-                                                        <div class="form-group"><label class="form-label" for="phone-no">Password</label>
-                                                            <div class="form-control-wrap"><input type="text" name="password" class=" form-control" id="phone-no"></div>
-                                                        </div>
-
-                                                        <div class="form-group"><label class="form-label" for="phone-no">Password</label>
-                                                            <div class="form-control-wrap"><input type="text" name="repassword" class=" form-control" id="phone-no"></div>
                                                         </div>
 
 
@@ -124,25 +106,12 @@
                                     <h5 class="modal-title">Add</h5><a href="#" class="close" data-bs-dismiss="modal" aria-label="Close"><em class="icon ni ni-cross"></em></a>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/admin/user/store" method="POST" class="form-validate is-alter">
+                                    <form action="/admin/keahlian/store" method="POST" class="form-validate is-alter">
                                         @csrf
-                                        <div class="form-group"><label class="form-label" for="full-name">Full Name</label>
+                                        <div class="form-group"><label class="form-label" for="full-name">Name</label>
                                             <div class="form-control-wrap"><input type="text" name="name" class="form-control" id="full-name" required=""></div>
                                         </div>
-                                        <div class="form-group"><label class="form-label" for="email-address">Email address</label>
-                                            <div class="form-control-wrap"><input type="text" name="email" class="form-control" id="email-address" required=""></div>
-                                        </div>
-                                        <div class="form-group"><label class="form-label" for="phone-no">Phone No</label>
-                                            <div class="form-control-wrap"><input type="text" name="no_hp" class="form-control" id="phone-no" required></div>
-                                        </div>
 
-                                        <div class="form-group"><label class="form-label" for="phone-no">Password</label>
-                                            <div class="form-control-wrap"><input type="password" name="password" class=" form-control" id="phone-no" required></div>
-                                        </div>
-
-                                        <div class="form-group"><label class="form-label" for="phone-no">Password</label>
-                                            <div class="form-control-wrap"><input type="password" name="repassword" class=" form-control" id="phone-no" required></div>
-                                        </div>
 
 
                                         <div class="form-group"><button type="submit" class="btn btn-lg btn-primary">Save</button></div>
