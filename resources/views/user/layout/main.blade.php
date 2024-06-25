@@ -54,7 +54,7 @@
     <!-- Product tab Area End -->
 
     <!-- Footer Start -->
-    @include('user.partials.footer')
+    <!-- @include('user.partials.footer') -->
     <!-- Footer Area End -->
 
 

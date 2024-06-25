@@ -168,33 +168,6 @@
                 </div>
             </div>
         </div>
-        <div class="footer-bottom py-[10px] max-[991px]:py-[15px] border-t-[1px] border-solid border-[#eee] bg-[#f8f8fb]">
-            <div class="flex flex-wrap justify-between items-center mx-auto min-[1600px]:max-w-[1600px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">
-                <div class="w-full flex flex-wrap">
-                    <div class="gi-bottom-info flex flex-row items-center justify-between w-full px-[12px] max-[991px]:flex-col">
-                        <!-- Footer Copyright Start -->
-                        <div class="footer-copy max-[991px]:mb-[15px]">
-                            <div class="footer-bottom-copy">
-                                <div class="gi-copy text-[#777] text-[13px] tracking-[1px] text-center font-light">
-                                    Copyright ©
-                                    <a class="site-name text-[#5caf90]" href="index.html">Grabit</a>
-                                    all rights reserved. Powered by Grabit.
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Footer Copyright End -->
-                        <!-- Footer payment -->
-                        <div class="footer-bottom-right">
-                            <div class="footer-bottom-payment flex justify-content-center">
-                                <div class="payment-link">
-                                    <img src="{{ asset('user/assets/img/hero-bg/payment.png') }}" alt="payment">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Footer payment -->
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 </footer>

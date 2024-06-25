@@ -29,9 +29,9 @@
                 <div class="nk-content ">
                     @yield('content')
                 </div>
-                <div class="nk-footer">
-                    @include('admin.partials.footer')
-                </div>
+                <!-- <div class="nk-footer"> -->
+                    <!-- @include('admin.partials.footer') -->
+                <!-- </div> -->
             </div>
         </div>
     </div>

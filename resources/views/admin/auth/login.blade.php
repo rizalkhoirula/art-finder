@@ -66,49 +66,22 @@
                                     </div>
                                     <div class="form-group"><button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button></div>
                                 </form>
-                                <div class="form-note-s2 pt-4"> New on our platform? <a href="auth-register.html">Create an account</a></div>
-                                <div class="text-center pt-4 pb-3">
-                                    <h6 class="overline-title overline-title-sap"><span>OR</span></h6>
-                                </div>
-                                <ul class="nav justify-center gx-4">
-                                    <li class="nav-item"><a class="link link-primary fw-normal py-2 px-3 fs-13px" href="#">Facebook</a></li>
-                                    <li class="nav-item"><a class="link link-primary fw-normal py-2 px-3 fs-13px" href="#">Google</a></li>
-                                </ul>
-                                <div class="text-center mt-5"><span class="fw-500">I don't have an account? <a href="#">Try 15 days free</a></span></div>
+                                
                             </div>
                             <div class="nk-block nk-auth-footer">
-                                <div class="mt-3">
-                                    <p>&copy; 2023 DashLite. All Rights Reserved.</p>
-                                </div>
+                               
                             </div>
                         </div>
                         <div class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right" data-toggle-body="true" data-content="athPromo" data-toggle-screen="lg" data-toggle-overlay="true">
                             <div class="slider-wrap w-100 w-max-550px p-3 p-sm-5 m-auto">
                                 <div class="slider-init" data-slick='{"dots":true, "arrows":false}'>
+                                    
                                     <div class="slider-item">
                                         <div class="nk-feature nk-feature-center">
-                                            <div class="nk-feature-img"><img class="round" src="{{ asset('admin/images/slides/promo-a.png') }}" srcset="images/slides/promo-a2x.png 2x" alt=""></div>
+                                            <div class="nk-feature-img"><img class="round" src="{{ asset('admin/images/slides/5.jpg') }}" srcset="../../images/slides/promo-c2x.png 2x" alt=""></div>
                                             <div class="nk-feature-content py-4 p-sm-5">
                                                 <h4>Dashlite</h4>
-                                                <p>You can start to create your products easily with its user-friendly design & most completed responsive layout.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slider-item">
-                                        <div class="nk-feature nk-feature-center">
-                                            <div class="nk-feature-img"><img class="round" src="{{ asset('admin/images/slides/promo-b.png') }}" srcset="../../images/slides/promo-b2x.png 2x" alt=""></div>
-                                            <div class="nk-feature-content py-4 p-sm-5">
-                                                <h4>Dashlite</h4>
-                                                <p>You can start to create your products easily with its user-friendly design & most completed responsive layout.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slider-item">
-                                        <div class="nk-feature nk-feature-center">
-                                            <div class="nk-feature-img"><img class="round" src="{{ asset('admin/images/slides/promo-c.png') }}" srcset="../../images/slides/promo-c2x.png 2x" alt=""></div>
-                                            <div class="nk-feature-content py-4 p-sm-5">
-                                                <h4>Dashlite</h4>
-                                                <p>You can start to create your products easily with its user-friendly design & most completed responsive layout.</p>
+                                                <p>You can your data in here</p>
                                             </div>
                                         </div>
                                     </div>
